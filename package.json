@@ -4,6 +4,10 @@
   "description": "Initialize a new Project",
   "main": "index.js",
   "license": "MIT",
+  "bin": {
+    "initproj-dev": "./bin/dev",
+    "initproj": "./bin/run"
+  },
   "devDependencies": {
     "@types/node": "11.10.4",
     "ts-node": "8.0.2",
