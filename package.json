@@ -4,6 +4,9 @@
   "description": "Initialize a new Project",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "build": "rm -rf build && tsc"
+  },
   "bin": {
     "initproj-dev": "./bin/dev",
     "initproj": "./bin/run"
@@ -12,6 +15,7 @@
     "@types/node": "11.10.4",
     "babel-runtime": "6.26.0",
     "ts-node": "8.0.2",
+    "tsc": "1.20150623.0",
     "typescript": "3.3.3333"
   },
   "dependencies": {
