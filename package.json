@@ -3,5 +3,10 @@
   "version": "0.0.1",
   "description": "Initialize a new Project",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "11.10.4",
+    "ts-node": "8.0.2",
+    "typescript": "3.3.3333"
+  }
 }
