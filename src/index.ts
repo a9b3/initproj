@@ -3,8 +3,10 @@ import * as fs from 'fs'
 import * as path from 'path'
 import chalk from 'chalk'
 
-function listModules() {
-  return fs.readdirSync(path.resolve(__dirname, './modules'))
+import { shell } from './task-api'
+
+function listTemplates() {
+  return fs.readdirSync(path.resolve(__dirname, '../templates'))
 }
 
 const commander = new Commander({
@@ -12,24 +14,41 @@ const commander = new Commander({
   packageJson: require('../package.json'),
 })
 
-commander.use(
-  'app',
-  new Commander({
-    description: 'Creates a new application',
-    shortDescription: 'Creates a new application project',
+const appCommand = new Command()
+appCommand.use(
+  'list',
+  new Command({
+    shortDescription: 'List template apps',
+    handler: () => {
+      console.log(listTemplates().join('\n'))
+    },
+  }),
+)
+appCommand.use(
+  'create',
+  new Command({
+    shortDescription: 'Create template app',
     handler: ({ commands, flags }: any) => {
-      if (!commands[0]) {
-        return console.log(listModules().join('\n'))
+      const [templateName, location] = commands
+      if (!templateName) {
+        throw new Error('No template name provided.')
       }
-      if (!commands[1]) {
+      if (!location) {
         throw new Error('No location provided.')
       }
 
-      if (!listModules().includes(commands[0])) {
+      if (!listTemplates().includes(templateName)) {
         throw new Error('No matching app provided.')
       }
 
-      require(`./modules/${commands[0]}`).default({ commands, flags })
+      shell(
+        `cp -r ${path.resolve(
+          __dirname,
+          '../templates/',
+          templateName,
+        )}/. ${location}`,
+      )
+      shell(`cd ${location} && yarn`)
     },
     commands: [
       {
@@ -45,5 +64,6 @@ commander.use(
     ],
   }),
 )
+commander.use('app', appCommand)
 
-commander.start().catch((e: any) => console.log(chalk.red(e.message)))
+commander.start().catch((e: any) => console.log(chalk.red(`> ${e.message}`)))
