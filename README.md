@@ -3,8 +3,13 @@
 ## Development
 
 ```shell
-yarn link
+> yarn link
+# Now you can access this globally
+> initproj
+```
 
-# will run the command line
-initproj-dev
+Spin up a typescript watch server to recompile whenever source changes.
+
+```shell
+> yarn dev
 ```
