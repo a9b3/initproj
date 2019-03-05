@@ -16,9 +16,7 @@
     "@types/node": "11.10.4",
     "babel-runtime": "6.26.0",
     "prettier": "1.16.4",
-    "ts-node": "8.0.2",
     "tsc": "1.20150623.0",
-    "tslib": "1.9.3",
     "typescript": "3.3.3333"
   },
   "dependencies": {
@@ -26,7 +24,8 @@
     "chalk": "2.4.2",
     "commander-shepard": "3.0.4",
     "fs-extra": "7.0.1",
-    "lodash": "4.17.11"
+    "lodash": "4.17.11",
+    "tslib": "1.9.3"
   },
   "repository": "git@github.com:esayemm/initproj.git",
   "author": "Sam Lau <esayemm@gmail.com>"
