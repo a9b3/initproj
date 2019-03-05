@@ -16,6 +16,7 @@ commander.use(
   'app',
   new Commander({
     description: 'Creates a new application',
+    shortDescription: 'Creates a new application project',
     handler: ({ commands, flags }: any) => {
       if (!commands[0]) {
         return console.log(listModules().join('\n'))
