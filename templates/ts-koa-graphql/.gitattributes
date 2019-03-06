@@ -1,0 +1,4 @@
+*.svg                     binary
+*.tgz filter=lfs diff=lfs merge=lfs -text
+secrets.yaml diff=sopsdiffer
+secrets.*.yaml diff=sopsdiffer

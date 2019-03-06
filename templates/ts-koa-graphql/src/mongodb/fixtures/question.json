@@ -1,0 +1,56 @@
+[
+  {
+    "type": "mustBeTrue",
+    "question": "Laird: Pure research provides us with new technologies that contribute to saving lives. Even more worthwhile than this, however, is its role in expanding our knowledge and providing new, unexplored ideas. \n\nKim: Your priorities are mistaken. Saving lives is what counts most of all. Without pure research, medicine would not be as advanced as it is. \n\nLaird and Kim disagree on whether pure research",
+    "answers": {
+      "a": "derives its significance in part from its providing new technologies",
+      "b": "expands the boundaries of our knowledge of medicine",
+      "c": "should have the saving of human lives as an important goal",
+      "d": "has its most valuable achievements in medical applications",
+      "e": "has any value apart from its role in providing new technologies to save lives"
+    },
+    "explanation": "this is why",
+    "correctAnswer": "a",
+    "origin": {
+      "date": "2012-04-23t18:25:43.511z",
+      "section": 1,
+      "num": 1
+    }
+  },
+  {
+    "type": "mustBeTrue",
+    "question": "Executive: We recently ran a set of advertisements in the print version of a travel magazine and on that magazine’s website. We were unable to get any direct information about consumer response to the print ads. However, we found that consumer response to the ads on the website was much more limited than is typical for website ads. We concluded that consumer response to the print ads was probably below par as well. \n\nThe executive’s reasoning does which one of the following?",
+    "answers": {
+      "a": "bases a prediction of the intensity of a phenomenon on information about the intensity of that phenomenon’s cause",
+      "b": "uses information about the typical frequency of events of a general kind to draw a conclusion about the probability of a particular event of that kind",
+      "c": "infers a statistical generalization from claims about a large number of specific instances",
+      "d": "uses a case in which direct evidence is available to draw a conclusion about an analogous case in which direct evidence is unavailable",
+      "e": "bases a prediction about future events on facts about recent comparable events"
+    },
+    "explanation": "this is why",
+    "correctAnswer": "a",
+    "origin": {
+      "date": "2012-04-23t18:25:43.511z",
+      "section": 1,
+      "num": 1
+    }
+  },
+  {
+    "type": "mustBeTrue",
+    "question": "During the construction of the Quebec Bridge in 1907, the bridge’s designer, Theodore Cooper, received word that the suspended span being built out from the bridge’s cantilever was deflecting downward by a fraction of an inch (2.54 centimeters). Before he could telegraph to freeze the project, the whole cantilever arm broke off and plunged, along with seven dozen workers, into the St. Lawrence River. It was the worst bridge construction disaster in history. As a direct result of the inquiry that followed, the engineering “rules of thumb” by which thousands of bridges had been built around the world went down with the Quebec Bridge. Twentieth-century bridge engineers would thereafter depend on far more rigorous applications of mathematical analysis. \n\nWhich one of the following statements can be properly inferred from the passage?",
+    "answers": {
+      "a": "Bridges built before about 1907 were built without thorough mathematical analysis and, therefore, were unsafe for the public to use.",
+      "b": "Cooper’s absence from the Quebec Bridge construction site resulted in the breaking off of the cantilever.",
+      "c": "Nineteenth-century bridge engineers relied on their rules of thumb because analytical methods were inadequate to solve their design problems.",
+      "d": "Only a more rigorous application of mathematical analysis to the design of the Quebec Bridge could have prevented its collapse.",
+      "e": "Prior to 1907 the mathematical analysis incorporated in engineering rules of thumb was insufficient to completely assure the safety of bridges under construction."
+    },
+    "explanation": "this is why",
+    "correctAnswer": "a",
+    "origin": {
+      "date": "2012-04-23t18:25:43.511z",
+      "section": 1,
+      "num": 1
+    }
+  }
+]

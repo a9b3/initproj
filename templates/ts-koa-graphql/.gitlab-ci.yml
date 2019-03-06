@@ -1,0 +1,65 @@
+image: node:11-alpine
+
+before_script:
+  - yarn --offline
+
+cache:
+  paths:
+    - node_modules/
+
+stages:
+  - test
+  - release
+  - deploy
+
+test:lint:
+  stage: test
+  script:
+    - yarn run lint
+
+test:test:
+  stage: test
+  script:
+    - yarn run test
+
+release:
+  stage: release
+  image: docker:stable
+  services:
+    - docker:dind
+  only:
+    - master
+  before_script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+  script:
+    - docker pull $CI_REGISTRY_IMAGE:latest || true
+    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA -t $CI_REGISTRY_IMAGE:latest .
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    - docker push $CI_REGISTRY_IMAGE:latest
+
+deploy:
+  stage: deploy
+  # dtzar/helm-kubectl:2.12.3 has
+  # helm v2.12.3, kubectl v1.13.2, alpine 3.8
+  image: dtzar/helm-kubectl:2.12.3
+  variables:
+    APP_NAME: "api-server"
+    # Must be set in CI environment
+    DIGITALOCEAN_ACCESS_TOKEN: ""
+    DIGITALOCEAN_CLUSTER_ID: ""
+  only:
+    - master
+  before_script:
+    - apk add curl
+    - if [ ! -e ~/.kube ]; then mkdir ~/.kube; fi
+    - |
+        curl --request GET \
+          -s -N \
+          --url "https://api.digitalocean.com/v2/kubernetes/clusters/${DIGITALOCEAN_CLUSTER_ID}/kubeconfig" \
+          --header "authorization: Bearer ${DIGITALOCEAN_ACCESS_TOKEN}" > ~/.kube/config
+    - helm init --client-only
+    - helm plugin install https://github.com/futuresimple/helm-secrets
+  script:
+    - helm install -f ./helm-chart/values/prod.secrets.yaml --dry-run --debug ./helm-chart
+    - helm secrets dec ./helm-chart/values/prod.secrets.yaml
+    - helm upgrade -f ./helm-chart/values/prod.secrets.yaml.dec --install --force --set image.tag="${CI_COMMIT_SHA}" --wait $APP_NAME ./helm-chart
